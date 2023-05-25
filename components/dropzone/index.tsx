@@ -1,17 +1,17 @@
 "use client";
 
-import pdfjs from "pdfjs";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
 const Dropzone = () => {
   const [fileName, setFileName] = useState("");
   const hiddenFileInput = useRef<HTMLInputElement>(null);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     hiddenFileInput.current!.click();
   };
 
-  const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
     if (!file) {
@@ -20,21 +20,16 @@ const Dropzone = () => {
 
     setFileName(file!.name);
 
-    console.log(file);
+    const formData = new FormData();
+    formData.append("pdfFile", file);
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = async function (e) {
-      const result = e.target?.result;
-      extractText(result!);
-    };
+    const parsed = await fetch("/api/extractText", {
+      method: "POST",
+      body: formData,
+    });
+
+    console.log(parsed);
   };
-
-  async function extractText(url: string | ArrayBuffer) {
-    console.log("AAAA", pdfjs);
-    const document = new pdfjs.Document();
-    const test = document(url);
-  }
 
   return (
     <form
