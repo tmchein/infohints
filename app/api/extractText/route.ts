@@ -9,6 +9,5 @@ export async function POST(request: NextRequest) {
 
   const parseBuffer = await PdfParse(buffer);
   const data = parseBuffer.numpages;
-  console.log(data);
-  return NextResponse.json({ data: "hopla" });
+  return NextResponse.json({ data: "hola" });
 }
