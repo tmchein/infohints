@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@cyber2024/pdf-parse-fixed':
+    specifier: ^1.2.5
+    version: 1.2.5
   '@types/node':
     specifier: 20.2.1
     version: 20.2.1
@@ -22,9 +25,9 @@ dependencies:
   next:
     specifier: 13.4.4
     version: 13.4.4(react-dom@18.2.0)(react@18.2.0)
-  pdf-parse:
-    specifier: ^1.1.1
-    version: 1.1.1
+  pdf-to-text:
+    specifier: 0.0.7
+    version: 0.0.7
   pdfjs-dist:
     specifier: ^3.6.172
     version: 3.6.172
@@ -61,6 +64,16 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
+
+  /@cyber2024/pdf-parse-fixed@1.2.5:
+    resolution: {integrity: sha512-EEYLmbqVo8+RqQEo6dWtBWDgYF5oDzUKN0J1C04wJ67H613Uu/HqPwhDPYbMnCMTp3UTox0L/X26+3Is7F0mPg==}
+    engines: {node: '>=6.8.1'}
+    dependencies:
+      debug: 3.2.7
+      node-ensure: 0.0.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.40.0):
@@ -2346,14 +2359,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /pdf-parse@1.1.1:
-    resolution: {integrity: sha512-v6ZJ/efsBpGrGGknjtq9J/oC8tZWq0KWL5vQrk2GlzLEQPUDB1ex+13Rmidl1neNN358Jn9EHZw5y07FFtaC7A==}
-    engines: {node: '>=6.8.1'}
-    dependencies:
-      debug: 3.2.7
-      node-ensure: 0.0.0
-    transitivePeerDependencies:
-      - supports-color
+  /pdf-to-text@0.0.7:
+    resolution: {integrity: sha512-NHWB7u/9q+SZ28UtEgJYljamp61j06oldHdvGik1729pzRFLCO4igbZwm0MOUWoIQUz4nla3n+cf3Jh7uiOZwQ==}
     dev: false
 
   /pdfjs-dist@3.6.172:
