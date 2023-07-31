@@ -10,6 +10,5 @@ export async function POST(request: Request) {
   const rawPdf = await PdfParse(buffer);
 
   const parsedPDF = rawPdf.text;
-
-  return NextResponse.json({ data: parsedPDF });
+  return NextResponse.json({ data: parsedPDF }, { status: 200 });
 }

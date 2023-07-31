@@ -1,9 +1,11 @@
 "use client";
 
+import { useCurriculum } from "@/context/curriculumContext";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
-const Dropzone = () => {
+const Dropzone = ({ uploadApiRoute }: { uploadApiRoute: string }) => {
   const [fileName, setFileName] = useState("");
+  const { information, setInformation } = useCurriculum();
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -23,12 +25,13 @@ const Dropzone = () => {
     const formData = new FormData();
     formData.append("pdfFile", file);
 
-    const parsed = await fetch("/api/extractText", {
+    const parsedFileResponse = await fetch(uploadApiRoute, {
       method: "POST",
       body: formData,
     });
 
-    console.log(parsed);
+    const parsedFile = await parsedFileResponse.json();
+    setInformation({ ...information, curriculumData: parsedFile });
   };
 
   return (
