@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@cyber2024/pdf-parse-fixed':
-    specifier: ^1.2.5
+    specifier: 1.2.5
     version: 1.2.5
   '@types/node':
     specifier: 20.2.1
